@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
 object KiiUserKTX {
-    suspend fun KiiUser.loginAsync(
+    suspend fun loginAsync(
         userIdentifier: String,
         password: String,
         context: CoroutineContext = Dispatchers.IO,
@@ -18,7 +18,7 @@ object KiiUserKTX {
         KiiUser.logIn(userIdentifier, password)
     }
 
-    suspend fun KiiUser.logInWithLocalPhoneAsync(
+    suspend fun logInWithLocalPhoneAsync(
         localPhoneNumber: String,
         password: String,
         country: String,
