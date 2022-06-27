@@ -10,7 +10,9 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://dl.cloudsmith.io/public/kii/kii-maven/maven' }
     }
 }
 rootProject.name = "AndroidStorageSDK-ktx"
 include ':app'
+include ':lib'
