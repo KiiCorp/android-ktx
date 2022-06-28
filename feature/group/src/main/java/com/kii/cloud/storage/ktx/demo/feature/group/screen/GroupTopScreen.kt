@@ -18,6 +18,11 @@ fun GroupTopScreen(navigate: (route: String) -> Unit) {
                 icon = android.R.drawable.ic_menu_search,
                 route = Screens.JoinedAsOwner.route,
             ),
+            MenuItem(
+                text = "Create",
+                icon = android.R.drawable.ic_menu_search,
+                route = Screens.Create.route,
+            ),
         ), navigate = navigate
     )
 }

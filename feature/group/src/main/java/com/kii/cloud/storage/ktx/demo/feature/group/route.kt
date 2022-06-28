@@ -7,6 +7,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.kii.cloud.storage.ktx.demo.feature.group.screen.GroupTopScreen
 import com.kii.cloud.storage.ktx.demo.feature.group.screen.Screens
+import com.kii.cloud.storage.ktx.demo.feature.group.screen.create.CreateGroupScreen
+import com.kii.cloud.storage.ktx.demo.feature.group.screen.create.CreateGroupViewModel
 import com.kii.cloud.storage.ktx.demo.feature.group.screen.list.GroupOfMemberScreen
 import com.kii.cloud.storage.ktx.demo.feature.group.screen.list.GroupOfMemberViewModel
 import com.kii.cloud.storage.ktx.demo.feature.group.screen.list.GroupOfOwnerScreen
@@ -26,6 +28,12 @@ fun NavGraphBuilder.groupGraph(navController: NavController) {
         composable(Screens.JoinedAsOwner.route) {
             val vm: GroupOfOwnerViewModel = hiltViewModel()
             GroupOfOwnerScreen(vm)
+        }
+        composable(Screens.Create.route) {
+            val vm: CreateGroupViewModel = hiltViewModel()
+            CreateGroupScreen(vm) {
+                navController.popBackStack()
+            }
         }
     }
 }
