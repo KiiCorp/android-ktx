@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "AndroidStorageSDK-ktx"
 include ':app'
 include ':lib'
+include ':feature:user'
+include ':core:core-ui'
