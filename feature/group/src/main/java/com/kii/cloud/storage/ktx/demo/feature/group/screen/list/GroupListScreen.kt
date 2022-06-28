@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -62,12 +63,16 @@ fun ListGroupItem(group: KiiGroup) {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .height(48.dp),
+            .height(64.dp),
         contentAlignment = Alignment.CenterStart,
     ) {
-        Text(
-            group.groupName ?: "",
-            modifier = Modifier.padding(start = 16.dp)
-        )
+        Column(
+            modifier = Modifier.padding(start = 16.dp),
+            horizontalAlignment = Alignment.Start,
+        ) {
+            Text(group.groupName ?: "")
+            Text(group.id ?: "")
+        }
+        Divider(modifier = Modifier.align(Alignment.BottomStart))
     }
 }
