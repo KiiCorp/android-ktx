@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.kii.cloud.storage.KiiUser
+import com.kii.cloud.storage.ktx.demo.feature.bucket.bucketGraph
 import com.kii.cloud.storage.ktx.demo.feature.group.groupGraph
 import com.kii.cloud.storage.ktx.demo.feature.user.userGraph
 import com.kii.cloud.storage.ktx.demo.screen.Screens
@@ -52,5 +53,6 @@ fun DemoAppMain() {
         }
         userGraph(navController)
         groupGraph(navController)
+        bucketGraph(navController)
     }
 }

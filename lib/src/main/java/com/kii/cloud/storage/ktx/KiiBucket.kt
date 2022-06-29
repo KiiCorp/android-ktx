@@ -13,7 +13,7 @@ suspend fun KiiBucket.query(
     query(null)
 }
 
-suspend fun KiiBucket.query(
+suspend fun KiiBucket.queryAsync(
     kiiQuery: KiiQuery,
     context: CoroutineContext = Dispatchers.IO,
 ) = withContext(context) {
@@ -21,14 +21,14 @@ suspend fun KiiBucket.query(
     query(kiiQuery)
 }
 
-suspend fun KiiBucket.count(
+suspend fun KiiBucket.countAsync(
     context: CoroutineContext = Dispatchers.IO,
 ) = withContext(context) {
     @Suppress("BlockingMethodInNonBlockingContext")
     count()
 }
 
-suspend fun KiiBucket.delete(
+suspend fun KiiBucket.deleteAsync(
     context: CoroutineContext = Dispatchers.IO,
 ) = withContext(context) {
     @Suppress("BlockingMethodInNonBlockingContext")

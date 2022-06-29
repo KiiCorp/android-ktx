@@ -33,6 +33,11 @@ fun MainScreen(
                 icon = R.drawable.ic_baseline_group_24,
                 route = Screens.Groups.route,
             ),
+            MenuItem(
+                text = "App scope bucket",
+                icon = R.drawable.ic_baseline_group_24,
+                route = Screens.AppBuckets.route,
+            ),
         ),
         navigate = navigate,
     )
