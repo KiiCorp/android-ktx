@@ -42,6 +42,8 @@ fun NavGraphBuilder.bucketGraph(navController: NavController) {
     }
     composable("objects/{objectURI}") {
         val vm: ObjectViewerViewModel = hiltViewModel()
-        ObjectViewerScreen(vm)
+        ObjectViewerScreen(vm) {
+            navController.popBackStack()
+        }
     }
 }
