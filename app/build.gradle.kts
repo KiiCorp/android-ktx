@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.kii.cloud.storage.ktx.demo"
-    compileSdk = 34
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.kii.cloud.storage.ktx.demo"
-        minSdk = 26
-        targetSdk = 34
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -65,8 +65,6 @@ dependencies {
     implementation(libs.ui)
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
-    // implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    //implementation("androidx.activity:activity-compose:1.4.0")
 
     implementation(libs.navigation.compose)
     implementation(libs.lifecycle.viewmodel.compose)
