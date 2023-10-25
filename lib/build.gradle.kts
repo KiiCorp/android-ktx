@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
+    namespace = "com.kii.cloud.storage.ktx"
     compileSdk = 32
 
     defaultConfig {
         minSdk = 26
-        targetSdk = 32
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

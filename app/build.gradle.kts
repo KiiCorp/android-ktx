@@ -1,13 +1,14 @@
 val compose_version: String by rootProject.ext
 val hilt_version: String by rootProject.ext
 plugins {
-    id("com.android.application")
+    alias(libs.plugins.androidApplication)
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
 }
 
 android {
+    namespace = "com.kii.cloud.storage.ktx.demo"
     compileSdk = 32
 
     defaultConfig {
@@ -45,7 +46,7 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = compose_version
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
