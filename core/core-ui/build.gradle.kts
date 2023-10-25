@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.kii.cloud.storage.ktx.demo.core.ui"
-    compileSdk = 32
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 26
@@ -36,7 +36,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }
 
