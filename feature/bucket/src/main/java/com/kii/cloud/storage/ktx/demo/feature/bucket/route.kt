@@ -5,6 +5,8 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.Screens
+import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.acl.ACLScreen
+import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.acl.AppBucketACLViewModel
 import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.create.AppCreateObjectViewModel
 import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.create.CreateObjectScreen
 import com.kii.cloud.storage.ktx.demo.feature.bucket.screen.list.AppObjectLitViewModel
@@ -20,12 +22,15 @@ fun NavGraphBuilder.bucketGraph(navController: NavController) {
         }
     }
     composable("${Screens.AppBucketName.route}/{name}") { backStackEntry ->
+        val name = backStackEntry.arguments?.getString("name") ?: ""
         val vm: AppObjectLitViewModel = hiltViewModel()
         ObjectListScreen(
             vm,
             toAdd = {
-                val name = backStackEntry.arguments?.getString("name") ?: ""
                 navController.navigate("${Screens.AppBucketName.route}/${name}/objects")
+            },
+            toACL = {
+                navController.navigate("${Screens.AppBucketName.route}/${name}/acl")
             },
             toObjectDetail = { obj ->
                 navController.navigate(Screens.ObjectViewer.makeRoute(obj.toUri().toString()))
@@ -45,5 +50,12 @@ fun NavGraphBuilder.bucketGraph(navController: NavController) {
         ObjectViewerScreen(vm) {
             navController.popBackStack()
         }
+    }
+
+    composable("${Screens.AppBucketName.route}/{name}/acl") { backStackEntry ->
+        val vm: AppBucketACLViewModel = hiltViewModel()
+        ACLScreen(vm, back = {
+            navController.popBackStack()
+        })
     }
 }
