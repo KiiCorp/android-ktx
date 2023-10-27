@@ -1,7 +1,3 @@
-ext {
-    extra["compose_version"] = "1.2.0-rc01"
-    extra["hilt_version"] = "2.40.1"
-}
 buildscript {
     dependencies {
         classpath(libs.hilt.android.gradle.plugin)

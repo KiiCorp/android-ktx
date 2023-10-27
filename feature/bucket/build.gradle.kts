@@ -44,10 +44,6 @@ dependencies {
     implementation(project(":core:core-ui"))
 
     implementation(libs.core.ktx)
-    implementation(libs.ui)
-    implementation(libs.material3)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.navigation.compose)
 
     implementation(libs.hilt.navigation.compose)
 

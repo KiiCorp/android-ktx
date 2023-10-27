@@ -39,12 +39,14 @@ android {
 }
 
 dependencies {
+    api(platform(libs.compose.bom))
+    androidTestApi(platform(libs.compose.bom))
 
     implementation(libs.core.ktx)
-    implementation(libs.ui)
-    implementation(libs.material3)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.navigation.compose)
+    api(libs.ui)
+    api(libs.material3)
+    api(libs.ui.tooling.preview)
+    api(libs.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
 }
