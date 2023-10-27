@@ -1,15 +1,14 @@
-val compose_version: String by rootProject.ext
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.androidLibrary)
+    alias(libs.plugins.kotlinAndroid)
 }
 
 android {
-    compileSdk = 32
+    namespace = "com.kii.cloud.storage.ktx.demo.feature.user"
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = 26
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -35,7 +34,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
 }
 
@@ -44,22 +43,13 @@ dependencies {
     implementation(project(":lib"))
     implementation(project(":core:core-ui"))
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.compose.ui:ui:$compose_version")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation("androidx.navigation:navigation-compose:2.5.0-rc02")
+    implementation(libs.core.ktx)
 
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+    implementation(libs.hilt.navigation.compose)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
-    debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
-    debugImplementation("androidx.customview:customview:1.2.0-alpha01")
-    debugImplementation("androidx.customview:customview-poolingcontainer:1.0.0-rc01")
-
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 }

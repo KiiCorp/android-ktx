@@ -1,19 +1,18 @@
-val compose_version: String by rootProject.ext
-val hilt_version: String by rootProject.ext
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("kotlin-kapt")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.ksp)
     id("dagger.hilt.android.plugin")
 }
 
 android {
-    compileSdk = 32
+    namespace = "com.kii.cloud.storage.ktx.demo"
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.kii.cloud.storage.ktx.demo"
-        minSdk = 26
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -43,9 +42,9 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
+        kotlinCompilerExtensionVersion = libs.versions.kotlinCompilerExtensionVersion.get()
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
@@ -53,6 +52,8 @@ android {
 }
 
 dependencies {
+    implementation(platform(libs.compose.bom))
+    androidTestImplementation(platform(libs.compose.bom))
 
     implementation(project(":lib"))
     implementation(project(":core:core-ui"))
@@ -60,26 +61,22 @@ dependencies {
     implementation(project(":feature:group"))
     implementation(project(":feature:bucket"))
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.compose.ui:ui:$compose_version")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation(libs.core.ktx)
+    implementation(libs.ui)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.material3)
 
-    implementation("androidx.navigation:navigation-compose:2.5.0-rc02")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1")
+    implementation(libs.navigation.compose)
+    implementation(libs.lifecycle.viewmodel.compose)
 
-    implementation("com.google.dagger:hilt-android:${hilt_version}")
-    kapt("com.google.dagger:hilt-android-compiler:${hilt_version}")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    ksp(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
 
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose_version")
-    debugImplementation("androidx.compose.ui:ui-tooling:$compose_version")
-    debugImplementation("androidx.compose.ui:ui-test-manifest:$compose_version")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.ext.junit)
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.tooling)
+    debugImplementation(libs.ui.test.manifest)
 }
